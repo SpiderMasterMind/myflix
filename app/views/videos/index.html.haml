@@ -1,0 +1,28 @@
+%article.video_category
+  - sorted = @videos.sort_by {|vid_obj| vid_obj.title}.in_groups_of(6, false)
+    - sorted.each do |r|
+    %header
+      %h3= link_to "Row"
+    .videos.row
+    - r.each do |v|      
+      .video.col-sm-2
+        = link_to video_path(v.id) do
+          %img(src="#{v.small_cover_url}")
+          = content_tag :p, v.title.titleize
+
+-#
+  %article.video_category
+    %header
+      %h3= link_to "TV Dramas"
+    .videos.row
+      - 6.times do
+        .video.col-sm-2
+          %img(src="/tmp/#{['futurama', 'south_park', 'family_guy'].sample}.jpg")
+
+  %article.video_category
+    %header
+      %h3= link_to "Reality TV"
+    .videos.row
+      - 6.times do
+        .video.col-sm-2
+          %img(src="/tmp/#{['futurama', 'south_park', 'family_guy'].sample}.jpg")
