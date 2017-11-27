@@ -1,31 +1,41 @@
 require 'spec_helper'
 
 describe Video do
-	it "saves itself with create" do
-		test = Video.create(title: "Test Title 1", description: "test description")
-		Video.first.title.should == "Test Title 1"
-	end
 
-	it "saves itself with save" do
-		test = Video.new(title: "Test Title 2", description: "test description")
-		test.save
-		expect(Video.first.title).to eq("Test Title 2")
-	end
+	it { should belong_to(:category) }
+	it { should validate_presence_of(:title) }
+	it { should validate_presence_of(:description) }	
 
-	it "belongs to a category" do
-		category = Category.create(name: "drama")
-		test = Video.new(title: "Line of Duty", description: "Cop show", category: category)
-		expect(test.category).to eq(category)
-	end
+	describe "#search_by_title" do 
 
-	it "requires a title" do
-		test_model = Video.new(description: "Cop show")
-		expect(test_model.save).to eq(false) # with no title
-	end
+		
 
-	it "requires a description" do
-		test_model = Video.new(title: "Futurama")
-		expect(test_model.save).to eq(false) # with no description
-	end
+		it "returns an empty array if no match is found" do
+			futurama = Video.create(title: "Futurama", description: "cartoon")
+			back_to_the_future = Video.create(title: "Back to the Future", description: "Time travel")
+			expect(Video.search_by_title("hello")).to eq([])
+		end
 
+		it "returns an array of one video for an exact match" do
+			futurama = Video.create(title: "Futurama", description: "cartoon")
+			back_to_the_future = Video.create(title: "Back to the Future", description: "Time travel")
+			expect(Video.search_by_title("Futurama")).to eq([futurama])
+		end
+
+		it "returns an array of one video for a partial match" do
+			futurama = Video.create(title: "Futurama", description: "cartoon")
+			back_to_the_future = Video.create(title: "Back to the Future", description: "Time travel")
+			expect(Video.search_by_title("turama")).to eq([futurama])
+		end
+
+		it "returns an array of all matches in order" do
+			futurama = Video.create(title: "Futurama", description: "cartoon")
+			back_to_the_future = Video.create(title: "Back to the Future", description: "Time travel")
+
+			expect(Video.search_by_title("Futur")).to eq([back_to_the_future, futurama])
+
+		end
+
+
+	end
 end
