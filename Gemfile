@@ -11,13 +11,14 @@ gem 'uglifier'
 gem 'jquery-rails'
 gem 'pg'
 gem 'bcrypt'
+gem "fabrication"
+gem "faker"
 
 group :development do
   gem 'thin'
   gem "better_errors"
   gem "binding_of_caller"
-	gem "fabrication"
-	gem "faker"
+
 end
 
 group :development, :test do
