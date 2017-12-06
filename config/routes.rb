@@ -8,6 +8,8 @@ Myflix::Application.routes.draw do
 		collection do
 			get 'search'
 		end
+
+		resource :reviews, only: [:create]
 	end
 
 	get 'register', to: "users#new"

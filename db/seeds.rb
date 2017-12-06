@@ -21,4 +21,10 @@ large_base_url = "http://placehold.it/665x375/"
 
 titles.each do |title|
 	Video.create(title: title, description: "A film", small_cover_url: "#{small_base_url}+#{random_color}/000000?text=#{title.upcase.titleize}", large_cover_url: "#{large_base_url}" + title.upcase)
+
 end
+
+murphy = User.create(full_name: "Murphy Cat", password: "password", email: "murphy@cat.com")
+ben = User.create(full_name: "Ben Stacey", password: "password", email: "ben@egg.com")
+
+Review.create(user: murphy, video: Video.first, rating: 3, content: "This is p good")

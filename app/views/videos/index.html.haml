@@ -8,7 +8,9 @@
       .video.col-sm-2
         = link_to video_path(v.id) do
           %img(src="#{v.small_cover_url}")
-          = content_tag :p, v.title.titleize
+          .tr
+            %p= v.title.titleize
+            %p= "(#{v.reviews.length})" 
 
 -#
   %article.video_category
