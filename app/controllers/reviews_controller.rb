@@ -1,9 +1,15 @@
 class ReviewsController < ApplicationController
+	before_action :require_user	
 
 	def create
-		video = Video.find(params[:video_id])
-		review = video.reviews.create(merged_review_params)
-		redirect_to video
+		@video = Video.find(params[:video_id])
+		review = @video.reviews.new(merged_review_params)
+		if review.save
+			redirect_to @video		
+		else
+			@reviews = @video.reviews.reload
+			render 'videos/show'
+		end
 	end
 
 	private
