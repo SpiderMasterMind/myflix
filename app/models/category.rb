@@ -1,8 +1,9 @@
 class Category < ActiveRecord::Base
 	has_many :videos 
 
+	validates :name, presence: true
+
 	def recent_videos
-		# return 6 or less most recent videos, most recent first
 		videos.first(6)
 	end
 end
