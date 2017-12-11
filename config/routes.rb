@@ -18,7 +18,7 @@ Myflix::Application.routes.draw do
 	get 'my_queue', to: "queue_items#index"
 	resources :users, only: [:create]
 	resources :sessions, only: [:create]
-	resources :queue_items, only: [:index]
+	resources :queue_items, only: [:create, :destroy]
 
 	# a queue item - has a video.title, user's video rating, and its genre
 	# a queue could be a separate resource, or a resource belonging to a user

@@ -2,9 +2,8 @@ class QueueItem < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :video
 
-	def video_title
-		self.video.title	
-	end
+	delegate :category, to: :video
+	delegate :title, to: :video, prefix: :video
 
 	def rating
 		review = Review.where(user: user.id, video: video.id).first
@@ -12,6 +11,7 @@ class QueueItem < ActiveRecord::Base
 	end
 
 	def category_name
-		self.video.category.name
+		category.name
 	end
+
 end
