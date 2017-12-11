@@ -1,5 +1,5 @@
 %article.video_category
-  - sorted = @videos.sort_by {|vid_obj| vid_obj.title}.in_groups_of(6, false)
+  - sorted = @videos.sort_by {|vid_obj| vid_obj.category.name}.in_groups_of(6, false)
     - sorted.each do |r|
     %header
       %h3= link_to "Row"
@@ -8,7 +8,9 @@
       .video.col-sm-2
         = link_to video_path(v.id) do
           %img(src="#{v.small_cover_url}")
-          = content_tag :p, v.title.titleize
+          .tr
+            %p= v.title.titleize
+            %p= "(#{v.reviews.length})" 
 
 -#
   %article.video_category

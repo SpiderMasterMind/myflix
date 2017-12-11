@@ -1,12 +1,14 @@
 class VideosController < ApplicationController
+	before_action :require_user	
 	before_action :set_video, only: [:show]
+	
 
 	def index
 		@videos = Video.all
 	end
 
 	def show
-
+		@reviews = @video.reviews
 	end
 
 	def search
