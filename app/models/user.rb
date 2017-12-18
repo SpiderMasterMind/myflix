@@ -6,4 +6,9 @@ class User < ActiveRecord::Base
 
 	has_secure_password
 
+	def normalize_queue_item_positions
+		queue_items.each_with_index do |queue_item_data, index|
+			queue_item_data.update_attributes(position: index + 1)
+		end
+	end
 end
