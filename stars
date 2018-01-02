@@ -1,0 +1,106 @@
+_HiStOrY_V2_
+\134l
+\134h
+\134d
+\134d\040public
+/q
+\134q
+\134d
+\134d
+\134d
+\134d
+\134d
+\134dt
+\134d\040videos
+SELECT\040*\040FROM\040videos;
+\134q
+\q
+\d
+\q
+\d
+select * from videos;
+\q
+/?
+\q
+\?
+\d
+\l
+\c postgres
+\l
+\t
+\t
+createdb animals
+\?
+\c animals
+\q
+createdb animals
+\c animals
+\l
+\q
+\q
+\d
+\t
+\h
+\l
+\c animals
+\t
+\l
+\dt
+select * from birds
+;
+select * from birds where age < 5;
+UPDATE birds SET name = Raven WHERE name = Crow
+;
+select * from birds;
+UPDATE birds SET species = Raven WHERE species = Crow
+;
+UPDATE birds SET species = Raven WHERE species = Crow
+;
+UPDATE birds SET species = "Raven" WHERE species = "Crow"
+;
+select * from birds;
+UPDATE birds SET species = 'Raven' WHERE species = 'Crow'
+;
+select * from birds;
+UPDATE birds SET species = 'Hawk' WHERE name = 'Jamie'
+;
+DELETE FROM birds WHERE age=3 AND species='Finch'
+;
+drop table birds
+;
+drop db animals
+;
+drop database animals
+;
+\q
+drop database animals
+;
+create database extrasolar
+;
+\c extrasolar
+create table stars(
+id serial primary key,
+name varchar(25) UNIQUE NOT NULL,
+distance integer NOT NULL CHECK (age > 0),
+spectral_type char(1),
+companions integer NOT NULL CHECK (companions >= 0)
+);
+create table stars(
+id serial primary key,
+name varchar(25) UNIQUE NOT NULL,
+distance integer NOT NULL CHECK (distance > 0),
+spectral_type char(1),
+companions integer NOT NULL CHECK (companions >= 0)
+);
+CREATE TABLE planets(
+id serial PRIMARY KEY,
+designation char(1),
+mass integer
+);
+INSERT INTO stars (name, distance, spectral_type, companions) VALUES ('Alpha Centauri B', 4, 'K', 3);
+ALTER TABLE stars
+ALTER COLUMN name TYPE varchar(30)
+;
+select * from stars;
+alter table stars alter column distance type numeric;
+\s stars

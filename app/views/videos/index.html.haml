@@ -1,5 +1,5 @@
 %article.video_category
-  - sorted = @videos.sort_by {|vid_obj| vid_obj.category.name}.in_groups_of(6, false)
+  -sorted = @videos.sort_by {|vid_obj| vid_obj.category.name}.in_groups_of(6, false)
     - sorted.each do |r|
     %header
       %h3= link_to "Row"
