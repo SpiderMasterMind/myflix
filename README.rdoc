@@ -4,11 +4,11 @@ This is a mock Netflix application built on Rails. The base project has been for
 
 * Mockup page access via "/ui"
 
-User auth/sign-in
+* User auth/sign-in
 
-User submitted reviews & ratings system
+* User submitted reviews & ratings system
 
-Ability to add @videos to MyQueue and re-arrange them
+* Ability to add @videos to MyQueue and re-arrange them
 
 == Running a local copy
 
