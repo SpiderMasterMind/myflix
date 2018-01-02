@@ -2,11 +2,13 @@
 
 This is a mock Netflix application built on Rails. The base project has been forked from Launchschool. So far the following features have been added using TDD principles (Unit tests, controller tests & feature tests - with Capybara):
 
-Mockup page access via "/ui"
-User auth/sign-in
-User submitted reviews & ratings system
-Ability to add @videos to MyQueue and re-arrange them
+* Mockup page access via "/ui"
 
+User auth/sign-in
+
+User submitted reviews & ratings system
+
+Ability to add @videos to MyQueue and re-arrange them
 
 == Running a local copy
 
